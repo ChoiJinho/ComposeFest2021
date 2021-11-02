@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -77,8 +78,8 @@ private fun DefaultPreview() {
 
 @Composable
 private fun MyApp(names: List<String> = List(1000) { "$it" }) {
-    var shouldShowOnboarding by remember {
-        mutableStateOf(false)
+    var shouldShowOnboarding by rememberSaveable {
+        mutableStateOf(true)
     }
 
     if (shouldShowOnboarding) {
@@ -121,7 +122,7 @@ private fun OnboardingScreen(onClicked: () -> Unit) {
     }
 }
 
-@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+@Preview(showBackground = true, widthDp = 320, heightDp = 320, name = "OnboardingPreview")
 @Composable
 private fun OnboardingPreview() {
     BasicsCodelabSampleTheme {
