@@ -1,6 +1,8 @@
 package com.example.basicscodelabsample
 
 import android.os.Bundle
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -65,7 +67,7 @@ private fun Greeting(name: String) {
     }
 }
 
-//@Preview(showBackground = true, name = "DefaultPreview", widthDp = 320)
+@Preview(showBackground = true, name = "DefaultPreview", widthDp = 320)
 @Composable
 private fun DefaultPreview() {
     BasicsCodelabSampleTheme {
@@ -74,9 +76,9 @@ private fun DefaultPreview() {
 }
 
 @Composable
-private fun MyApp(names: List<String> = listOf("World", "Compose")) {
+private fun MyApp(names: List<String> = List(1000) { "$it" }) {
     var shouldShowOnboarding by remember {
-        mutableStateOf(true)
+        mutableStateOf(false)
     }
 
     if (shouldShowOnboarding) {
@@ -88,8 +90,8 @@ private fun MyApp(names: List<String> = listOf("World", "Compose")) {
 
 @Composable
 private fun Greetings(names: List<String>) {
-    Column(modifier = Modifier.padding(all = 8.dp)) {
-        for (name in names) {
+    LazyColumn(modifier = Modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name = name)
         }
     }
