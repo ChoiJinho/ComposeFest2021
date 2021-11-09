@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -32,6 +35,7 @@ class MainActivity : ComponentActivity() {
                 }*/
 
                 PhotographerCard()
+                LayoutsCodelab()
             }
         }
     }
@@ -83,7 +87,7 @@ fun PhotographerCard() {
 
 const val Blue = 0xFF0000FF
 
-@Preview(showBackground = true, backgroundColor = Blue)
+//@Preview(showBackground = true, backgroundColor = Blue)
 @Composable
 fun PhotographerCardPreview() {
     BasicsCodelabSampleTheme {
@@ -91,6 +95,50 @@ fun PhotographerCardPreview() {
     }
 }
 
+@Composable
+fun LayoutsCodelab() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "LayoutsCodelab",
+//                    style = MaterialTheme.typography.h3
+                    )
+                },
+                actions = {
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(Icons.Filled.Favorite, contentDescription = null)
+                    }
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(Icons.Filled.Face, contentDescription = null)
+                    }
+                }
+            )
+        }) {
+        BodyContent(
+            Modifier
+                .padding(paddingValues = it)
+                .then(other = Modifier)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LayoutsCodelabPreview() {
+    BasicsCodelabSampleTheme {
+        LayoutsCodelab()
+    }
+}
+
+@Composable
+fun BodyContent(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(text = "Hi there!")
+        Text(text = "Thanks for going through the Layouts codelab")
+    }
+}
 
 
 
