@@ -49,7 +49,9 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.compose.rally.R
+import com.example.compose.rally.RallyScreen
 import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.AccountRow
 import com.example.compose.rally.ui.components.BillRow
@@ -60,9 +62,14 @@ import java.util.Locale
 
 @Composable
 fun OverviewBody(
-    onClickSeeAllAccounts: () -> Unit = {},
-    onClickSeeAllBills: () -> Unit = {},
+//    onClickSeeAllAccounts: () -> Unit = {},
+//    onClickSeeAllBills: () -> Unit = {},
+//    onAccountClick: (String) -> Unit = {},
+
+    navController: NavHostController,
     onAccountClick: (String) -> Unit = {},
+    onClickSeeAllAccounts: () -> Unit = { navController.navigate(RallyScreen.Accounts.name) },
+    onClickSeeAllBills: () -> Unit = { navController.navigate(RallyScreen.Bills.name) },
 ) {
     Column(
         modifier = Modifier
