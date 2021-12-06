@@ -48,6 +48,7 @@ class PlantDetailFragmentTest {
 
     @Rule
     @JvmField
+//    val activityTestRule = createAndroidComposeRule<GardenActivity>()
     val composeTestRule = createAndroidComposeRule<GardenActivity>()
 
     // Note that keeping these references is only safe if the activity is not recreated.
